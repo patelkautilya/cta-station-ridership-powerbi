@@ -1,0 +1,61 @@
+{
+  "source": "https://data.cityofchicago.org/api/views/5neh-572f.json",
+  "dataset_page": "https://data.cityofchicago.org/Transportation/CTA-Ridership-L-Station-Entries-Daily-Totals/5neh-572f",
+  "extracted_at_utc": "2026-11-13T03:04:59.721307+00:00",
+  "source_rows_updated_at_unix": 1793206334,
+  "window": {
+    "start": "2024-01-01",
+    "end": "2025-12-31"
+  },
+  "daily_rows": 105082,
+  "distinct_stations": 144,
+  "distinct_dates": 731,
+  "total_entries": 225706465,
+  "entries_by_year": {
+    "2024": 108217182,
+    "2025": 117489283
+  },
+  "entries_by_day_type": {
+    "A": 27045939,
+    "U": 22653305,
+    "W": 176007221
+  },
+  "station_name_variants": {},
+  "stations_per_date_min": 143,
+  "stations_per_date_max": 144,
+  "stations_per_date_mean": 143.751,
+  "aggregate_rows": 10350,
+  "aggregate_entries": 225706465,
+  "aggregate_station_days": 105082,
+  "zero_entry_station_days": 1156,
+  "source_query_years": {
+    "2024": {
+      "rows": "52522",
+      "rides": "108217182",
+      "dates": "366"
+    },
+    "2025": {
+      "rows": "52560",
+      "rides": "117489283",
+      "dates": "365"
+    }
+  },
+  "source_query_summary": {
+    "rows": "105082",
+    "rides": "225706465",
+    "stations": "144",
+    "dates": "731",
+    "first_date": "2024-01-01T00:00:00.000",
+    "last_date": "2025-12-31T00:00:00.000"
+  },
+  "files": {
+    "cta_station_daily_2024_2025.csv": {
+      "bytes": 3961357,
+      "sha256": "4ca08259f6a253bde11c26be9b257bc341d763f450a54356f28e3f525cc2cbf7"
+    },
+    "cta_station_month_daytype_2024_2025.csv": {
+      "bytes": 443569,
+      "sha256": "dd427ced5c1a74916ddd8d48555be5e38df9604f05c413446afa7fb9f639466f"
+    }
+  }
+}
