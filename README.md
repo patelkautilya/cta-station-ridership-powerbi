@@ -1,6 +1,6 @@
 # CTA 'L' Station Entries | 2024–2025
 
-An analyst case study of daily station entries reported by the Chicago Transit Authority (CTA). The current repository package contains a reproducible Python extract, a compact Power BI input table, validation evidence, and findings. Dashboard publication status will be added after the report is built and verified.
+An analyst case study of daily station entries reported by the Chicago Transit Authority (CTA). The package includes a reproducible Python extract, a compact Power BI input table, validation evidence, findings, and a two-page report export.
 
 ## Question
 
@@ -27,10 +27,16 @@ How did reported 'L' station entries vary across 2024–2025 by month, station, 
 
 The 2025 total is **8.57% higher** than the 2024 total in this extract. Calendar-day averages are 321,888 in 2025 and 295,675 in leap-year 2024, an **8.87% difference**. These are descriptive counts, not a causal estimate of demand growth. See [`FINDINGS.md`](FINDINGS.md) for station coverage and interpretation.
 
-## Report design
+## Power BI report
 
-The planned two-page Power BI report is specified in [`POWER_BI_BUILD.md`](POWER_BI_BUILD.md). It will link here only after it is saved, checked against the values above, exported, and previewed. Report access in Power BI may require sign-in; the public PDF and previews will provide an open view.
+- [Open the interactive Power BI report](https://app.powerbi.com/groups/e6426da3-9b36-4519-acf1-2434daa552ae/reports/b00d9eed-9986-450c-9bd9-ef1127adc1b2/04fe2fbf008da1de0a2d?experience=power-bi) (Microsoft sign-in or workspace access may be required).
+- [View the two-page PDF export](CTA_Station_Ridership_Report.pdf) and page previews: [network overview](cta-report-preview-1.png) · [station detail](cta-report-preview-2.png).
+- **Network overview:** total entries and observed station-days, monthly trend, day-type mix, and year and station filters.
+- **Station detail:** station ranking, monthly trend, year and day-type filters. Selecting a station bar cross-filters the trend; the Lake/State selection was checked in the saved report and then cleared before export.
+
+The PDF was exported with default values and both pages were visually checked. The model uses summed `rides` and `station_days` from the compact table; it does not contain the optional DAX measures in [`POWER_BI_BUILD.md`](POWER_BI_BUILD.md).
 
 ## Limits
 
 Entries are not unique people or complete trips. Station entries do not reveal line boardings at multi-line stations. The extract includes zero-entry station-days and one station ID with only 549 of 731 dates; station availability and service changes affect comparisons. Monthly totals also reflect differing month lengths and CTA day-type composition. The data support descriptive patterns, not exposure-adjusted station performance or an explanation for why ridership changed.
+
