@@ -1,10 +1,10 @@
-# Power BI report plan and acceptance checks
+# Power BI report implementation and acceptance checks
 
 ## Model
 
-Import the public raw URL for `cta_station_month_daytype_2024_2025.csv` after the repository is created. Keep `station_id` as text, `year` as a whole number, `month` as a sortable month date or a text YYYY-MM field sorted chronologically, `rides` and `station_days` as whole numbers, and `day_type` as text. No daily date drill is available in this aggregate; drill from year to month and from station rank to station detail.
+The saved semantic model **CTA Station Ridership | 2024-2025** imports `cta_station_month_daytype_2024_2025.csv`. The report **CTA Station Ridership | Station & Day-Type Review** has two pages. It uses implicit SUM aggregation for `rides` and `station_days`. `year` and `month` support chronological review; the compact grain has no daily date drill.
 
-Suggested DAX:
+Optional DAX enhancements, **not implemented in the saved report**:
 
 ```DAX
 Entries = SUM('CTA'[rides])
@@ -15,20 +15,18 @@ Active Stations = COUNTROWS(FILTER(VALUES('CTA'[station_id]), CALCULATE([Entries
 
 `Entries per Station-Day` is a weighted station-day average. Do not average precomputed ratios by row. `Active Stations` is the count of station IDs with positive entries in the current filter context; it does not mean a station was open throughout the selected window.
 
-## Page 1: system overview
+## Page 1: Network overview
 
-- KPI cards: Entries, Active Stations, Entries per Station-Day.
-- Year selector (2024–2025) and CTA day-type selector (W/A/U).
+- KPI cards: summed entries and observed station-days.
+- Year range and station-name slicers.
 - Monthly entry trend, chronologically ordered.
-- Top stations by entries with ranking and clear count units.
-- Source/window and interpretation note on the page.
+- Donut chart of summed entries by CTA day type (W/A/U).
 
-## Page 2: station detail
+## Page 2: Station detail
 
-- Station selector or drill-through from the ranking chart.
-- Monthly entries for selected station and day-type mix.
-- Sortable station table with entries, station-days, and weighted entries per station-day.
-- Show full-window baseline when no station filter is active. Verify that exporting from a drill-through test does not leave the page inadvertently filtered.
+- Station ranking bar chart and monthly entry trend.
+- Year range and day-type slicers.
+- Click a station bar to cross-filter the trend. This interaction was checked with Lake/State: the monthly chart rescaled to that station's series, then returned to the full-window baseline after clearing the selection.
 
 ## Checks before publication
 
@@ -36,3 +34,4 @@ Active Stations = COUNTROWS(FILTER(VALUES('CTA'[station_id]), CALCULATE([Entries
 - All-day-type entries: W 176,007,221; A 27,045,939; U 22,653,305.
 - Year/day-type/station filters change all dependent visuals consistently. Confirm at least one drill interaction and reset filters before export.
 - Export two pages, inspect each visually, publish PDF and PNG previews with working public links, and add truthful report links to README/profile/site. Power BI service access may require sign-in.
+
